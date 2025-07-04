@@ -30,6 +30,7 @@ pip3 install pandas yfinance matplotlib
 ```
 
 That’s it. No API keys or paid data feeds required.
+
 ---
 
 ## How to Run
