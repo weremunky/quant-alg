@@ -57,9 +57,11 @@ if __name__ == "__main__":
     plt.figure(figsize=(12, 6))
     plt.plot(df.index, df['market_cum'], label='Buy & Hold (Market)')
     plt.plot(df.index, df['strategy_cum'], label='Moving Avg Strategy')
+    
     plt.title('Strategy vs. Market Performance (2015–2024)')
     plt.xlabel('Date')
     plt.ylabel('Cumulative Return')
+    
     plt.legend()
     plt.tight_layout()
     plt.show()
