@@ -26,16 +26,19 @@ You'll need Python 3.7+ and a few libraries.
 Install dependencies with:
 
 ```bash
-pip3 install pandas yfinance matplotlib
+pip3 install pandas yfinance matplotlib 
+```
 
 That’s it. No API keys or paid data feeds required.
+---
 
-How to Run
+## How to Run
 
 Just run the main script:
 
 ```bash
 python3 main.py
+```
 
 The program will:
 
@@ -47,7 +50,9 @@ The program will:
 
     Print performance metrics and show a plot
 
-Understanding the Results
+---
+
+## Understanding the Results
 
 The output gives you three key metrics:
 
@@ -59,7 +64,9 @@ The output gives you three key metrics:
 
 The strategy generates a “signal” of 1 (invested) when the 20-day MA is above the 50-day MA, and 0 (cash) otherwise. It’s a trend-following approach that tries to capture sustained upward moves while avoiding some downturns.
 
-What I Learned
+---
+
+## What I Learned
 
 This was my first real dive into quantitative finance, and it taught me a lot about:
 
@@ -73,7 +80,9 @@ This was my first real dive into quantitative finance, and it taught me a lot ab
 
 The moving average crossover isn’t groundbreaking, but it’s a solid foundation for understanding systematic trading approaches.
 
-Next Steps & Improvements
+---
+
+## Next Steps & Improvements
 
 Some ideas I’m considering for future versions:
 
@@ -88,5 +97,7 @@ Some ideas I’m considering for future versions:
     Risk management: Stop-losses, position sizing, drawdown limits
 
 This project gave me hands-on experience with the kind of systematic analysis that’s common in quantitative finance roles, and I’m excited to build on it.
+
+---
 
 Ian Angel, 2024
