@@ -35,7 +35,7 @@ That’s it. No API keys or paid data feeds required.
 
 ## Universal Usage & Custom Data
 
-You can use this script on **any stock, ETF, crypto, or your own time series data**—not just SPY.
+You can use this script on **any stock, ETF, crypto, or your own time series data**, not just SPY.
 
 Customize the run with these command-line options:
 
