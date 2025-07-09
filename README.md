@@ -33,6 +33,47 @@ That’s it. No API keys or paid data feeds required.
 
 ---
 
+## Universal Usage & Custom Data
+
+You can use this script on **any stock, ETF, crypto, or your own time series data**—not just SPY.
+
+Customize the run with these command-line options:
+
+---
+
+### **Examples**
+
+**Run with any symbol and date range:**
+```bash
+python3 main.py --symbol AAPL --start 2020-01-01 --end 2024-01-01
+```
+**Change moving average windows:
+```bash
+python3 main.py --symbol TSLA --fast 10 --slow 200
+```
+**Run on your own data file:
+(Your CSV must have at least a Close column.)
+```bash
+python3 main.py --input_csv yourdata.csv
+```
+**All Command-Line Options
+
+    --symbol : ticker (default: SPY)
+
+    --start : start date (default: 2015-01-01)
+
+    --end : end date (default: 2024-01-01)
+
+    --fast : fast moving average window (default: 20)
+
+    --slow : slow moving average window (default: 50)
+
+    --input_csv : path to a custom CSV (optional; overrides symbol/date)
+
+If your CSV is missing a Close column or has formatting issues, the script will explain what’s wrong.
+
+---
+
 ## How to Run
 
 Just run the main script:
