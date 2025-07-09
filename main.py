@@ -1,10 +1,26 @@
 import pandas as pd
 import yfinance as yf
+import argparse
+import sys
 
-#Download SPY (S&P 500 ETF) daily data from Yahoo Finance (2015-2024)
-def get_data(symbol="SPY", start="2015-01-01", end="2024-01-01"):
-    data = yf.download(symbol, start=start, end=end)
-    data.to_csv(f"{symbol}_{start[:4]}_{end[:4]}.csv")
+#Download data from Yahoo Finance or load from a CSV file
+def get_data(symbol="SPY", start="2015-01-01", end="2024-01-01", input_csv=None):
+    if input_csv:
+        try:
+            data = pd.read_csv(input_csv, parse_dates=True, index_col=0)
+        except Exception as e:
+            print(f"Error loading {input_csv}: {e}")
+            sys.exit(1)
+    else:
+        data = yf.download(symbol, start=start, end=end)
+        if data.empty:
+            print(f"No data found for {symbol} between {start} and {end}.")
+            sys.exit(1)
+        data.to_csv(f"{symbol}_{start[:4]}_{end[:4]}.csv")
+    if "Close" not in data.columns:
+        print("Input data must have a 'Close' column.")
+        sys.exit(1)
+    data = data.dropna(subset=["Close"])
     return data
 
 #Calculate moving averages for strategy
@@ -20,13 +36,23 @@ def generate_signals(data):
     return data
 
 if __name__ == "__main__":
+    #Argument parsing for custom runs
+    parser = argparse.ArgumentParser(description="Universal Quant Trading Backtest")
+    parser.add_argument("--symbol", type=str, default="SPY", help="Ticker symbol (default: SPY)")
+    parser.add_argument("--start", type=str, default="2015-01-01", help="Start date (YYYY-MM-DD)")
+    parser.add_argument("--end", type=str, default="2024-01-01", help="End date (YYYY-MM-DD)")
+    parser.add_argument("--fast", type=int, default=20, help="Fast MA window (default: 20)")
+    parser.add_argument("--slow", type=int, default=50, help="Slow MA window (default: 50)")
+    parser.add_argument("--input_csv", type=str, default=None, help="Path to custom CSV (optional)")
+    args = parser.parse_args()
+
     #Step 1: Data Collection
-    df = get_data()
-    print("Data downloaded. First few rows:")
+    df = get_data(symbol=args.symbol, start=args.start, end=args.end, input_csv=args.input_csv)
+    print("Data loaded. First few rows:")
     print(df.head())
 
     #Step 2: Add indicators
-    df = add_indicators(df)
+    df = add_indicators(df, fast=args.fast, slow=args.slow)
 
     #Step 3: Generate signals
     df = generate_signals(df)
@@ -57,11 +83,12 @@ if __name__ == "__main__":
     plt.figure(figsize=(12, 6))
     plt.plot(df.index, df['market_cum'], label='Buy & Hold (Market)')
     plt.plot(df.index, df['strategy_cum'], label='Moving Avg Strategy')
+    plt.title(f"{args.symbol} Strategy vs. Market Performance")
     
-    plt.title('Strategy vs. Market Performance (2015–2024)')
     plt.xlabel('Date')
     plt.ylabel('Cumulative Return')
     
     plt.legend()
     plt.tight_layout()
     plt.show()
+
