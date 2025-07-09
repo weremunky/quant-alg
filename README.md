@@ -110,13 +110,13 @@ The strategy generates a “signal” of 1 (invested) when the 20-day MA is abov
 
 This was my first real dive into quantitative finance, and it taught me a lot about:
 
-    Working with financial time series data
+- Working with financial time series data
 
-    The importance of proper backtesting methodology
+- The importance of proper backtesting methodology
 
-    How simple strategies can sometimes be surprisingly effective
+- How simple strategies can sometimes be surprisingly effective
 
-    The trade-offs between returns and risk management
+- The trade-offs between returns and risk management
 
 The moving average crossover isn’t groundbreaking, but it’s a solid foundation for understanding systematic trading approaches.
 
@@ -126,15 +126,15 @@ The moving average crossover isn’t groundbreaking, but it’s a solid foundati
 
 Some ideas I’m considering for future versions:
 
-    Transaction costs: Add realistic brokerage fees and slippage
+- Transaction costs: Add realistic brokerage fees and slippage
 
-    Multiple timeframes: Test different MA periods (10/30, 50/200, etc.)
+- Multiple timeframes: Test different MA periods (10/30, 50/200, etc.)
 
-    Additional filters: Volume confirmation, volatility adjustments
+- Additional filters: Volume confirmation, volatility adjustments
 
-    More assets: Extend beyond SPY to other ETFs or individual stocks
+- More assets: Extend beyond SPY to other ETFs or individual stocks
 
-    Risk management: Stop-losses, position sizing, drawdown limits
+- Risk management: Stop-losses, position sizing, drawdown limits
 
 This project gave me hands-on experience with the kind of systematic analysis that’s common in quantitative finance roles, and I’m excited to build on it.
 
