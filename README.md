@@ -41,20 +41,20 @@ You can use this script on **any stock, ETF, crypto, or your own time series dat
 
 ### **Examples**
 
-**Run with any symbol and date range:**
+Run with any symbol and date range:**
 ```bash
 python3 main.py --symbol AAPL --start 2020-01-01 --end 2024-01-01
 ```
-**Change moving average windows:
+Change moving average windows:
 ```bash
 python3 main.py --symbol TSLA --fast 10 --slow 200
 ```
-**Run on your own data file:
+Run on your own data file:
 (Your CSV must have at least a Close column.)
 ```bash
 python3 main.py --input_csv yourdata.csv
 ```
-**All Command-Line Options
+All Command-Line Options
 
     --symbol : ticker (default: SPY)
 
